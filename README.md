@@ -1,16 +1,10 @@
-# Next.js WooCommerce Storefront Theme
+# Next.js WooCommerce
 
 Using Next.js, TypeScript and styled-components.
 
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Onixaz_nextjs-woocommerce-storefront)](https://sonarcloud.io/dashboard?id=Onixaz_nextjs-woocommerce-storefront)
-
-#### _WIP_
-
-![demo](https://github.com/Onixaz/nextjs-woocommerce-storefront/blob/main/public/demo.gif)
-
 ## The Goal
 
-The idea behind this repo was to showcase the power of [Next.js](https://nextjs.org/) by building a frontend for [WooCommerce](https://woocommerce.com/) using nothing but [Woo's REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/) only. This means truly headless and secure WooCommerce without any redirects to checkouts etc. In a true [Jamstack](https://jamstack.org/) fashion.
+The idea behind this repo was to showcase the power of [Next.js](https://nextjs.org/) by building a frontend for [WooCommerce](https://woocommerce.com/) using nothing but [Woo's REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/) only. This means truly headless and secure WooCommerce without any redirects to checkouts etc. 
 
 ## Features
 
@@ -19,7 +13,6 @@ The idea behind this repo was to showcase the power of [Next.js](https://nextjs.
 - Client side fetching of dynamic data like prices / account details using [SWR](https://swr.vercel.app/).
 - WooCommerce REST API abstraction using [Next's API routes](https://nextjs.org/docs/api-routes/introduction).
 - JWT based authentication for data fetching / endpoint protection.
-- Cart system using [CoCart](https://wordpress.org/plugins/cart-rest-api-for-woocommerce) plugin.
 - Customer registration and authentication using [NextAuth.js](https://next-auth.js.org/).
 - Checkout system using [Stripe](https://stripe.com/) as a payment method example.
 
@@ -32,8 +25,6 @@ Install required plugins on your Wordpress:
 - [WooCommerce](https://wordpress.org/plugins/woocommerce/) (obviously)
 - [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
 - [Password Reset with Code for WordPress REST API](https://wordpress.org/plugins/bdvs-password-reset/) (to be implemented)
-- [CoCart - Decoupling WooCommerce Made Easy](https://wordpress.org/plugins/cart-rest-api-for-woocommerce)
-- [CoCart – CORS Support](https://wordpress.org/plugins/cocart-cors/)
 
 Make sure Permalinks are set to **Post Name (Settings -> Permalinks).** Also make sure your **JWT Authentication for WP REST API** plugin is configured correctly.
 You will also need to add a shipping method to **Locations not covered by your other zones** for now.
@@ -72,7 +63,7 @@ Finally **npm run dev.**
 - ~~Dynamic prices using SWR (client side data fetching).~~
 - ~~Shipping options.~~
 - ~~Products pagination.~~
-- ~~User specific cart.~~
+- Product Variation.
 - User dashboard (orders, addresses, password reset).
 - Pages for categories.
 - Blog page.
