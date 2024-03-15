@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx --fix",
-    "postbuild": "next-sitemap --config next-sitemap.config.js"
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "format": "prettier --write \"**/*.{js,ts,tsx,json}\"",
+    "refresh": "rm -rf node_modules && rm pnpm-lock.yaml && pnpm i && pnpm run format"
   },
   "husky": {
     "hooks": {
@@ -40,7 +42,8 @@
     "react-icons": "^3.11.0",
     "stripe": "^8.132.0",
     "styled-components": "^5.1.1",
-    "swr": "^0.4.0"
+    "swr": "^0.4.0",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@builder.io/partytown": "^0.8.1",

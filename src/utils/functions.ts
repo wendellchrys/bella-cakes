@@ -113,3 +113,23 @@ export const createOrder = async (customer: Customer, payment: string, cart: Car
 
   return res.json()
 }
+
+export const formatPrice = (value: number) => {
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+  return formatter.format(value)
+}
+
+export const filteredVariantPrice = (prices: Array<string>) => {
+  const numbers = prices.map((price) => parseFloat(price))
+
+  const minPrice = Math.min(...numbers)
+  const maxPrice = Math.max(...numbers)
+
+  const formattedMinPrice = formatPrice(minPrice)
+  const formattedMaxPrice = formatPrice(maxPrice)
+
+  return `${formattedMinPrice} - ${formattedMaxPrice}`
+}

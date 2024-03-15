@@ -1,5 +1,5 @@
-import { Product } from '../../types'
-import React from 'react'
+import React, { useState } from 'react'
+import { Product, Variations } from '../../types'
 import { BasicGrid, BasicContainer } from '../../styles/utils'
 import * as ProductPageStyles from './styled'
 import AddToCartForm from '../../components/Product/AddToCartForm'
@@ -7,9 +7,20 @@ import ProductPrice from '../../components/Product/ProductPrice'
 
 interface ProductPageContentProps {
   product: Product
+  variations: Variations[]
 }
 
-const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product }) => {
+const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product, variations }) => {
+  // Estado para a variação selecionada
+  const [selectedVariation, setSelectedVariation] = useState<Variations | undefined>(undefined)
+
+  // Lidar com a mudança de seleção de variação
+  const handleVariationChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const variationId = parseInt(event.target.value, 10)
+    const selectedVar = variations.find((variation) => variation.id === variationId)
+    setSelectedVariation(selectedVar)
+  }
+
   return (
     <BasicContainer>
       <ProductPageStyles.ContentWrapper>
@@ -25,12 +36,33 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product }) =>
               <ProductPrice product={product} center={false} size={1.3} />
               <ProductPageStyles.ShortDescription
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
-              ></ProductPageStyles.ShortDescription>
+              />
+              {variations.length > 0 && (
+                <div>
+                  <label htmlFor="product-variations">Escolha uma Variação:</label>
+                  <select id="product-variations" onChange={handleVariationChange} defaultValue="">
+                    <option disabled value="">
+                      Selecione
+                    </option>
+                    {variations.map((variation) => (
+                      <option key={variation.id} value={variation.id}>
+                        {variation.attributes
+                          .map(
+                            (attr: { name: string; option: string }) =>
+                              `${attr.name}: ${attr.option}`,
+                          )
+                          .join(', ')}{' '}
+                        - R${variation.price}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </ProductPageStyles.InfoWrapperCol>
             <ProductPageStyles.InfoWrapperCol>
-              <AddToCartForm product={product} />
+              <AddToCartForm product={product} variation={selectedVariation} />
               <ProductPageStyles.Category>
-                Categories:{' '}
+                Categoria:{' '}
                 <ProductPageStyles.CategorySpan>
                   {product.categories[0].name}
                 </ProductPageStyles.CategorySpan>
@@ -40,7 +72,7 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product }) =>
         </BasicGrid>
         <ProductPageStyles.LongDescription
           dangerouslySetInnerHTML={{ __html: product.description }}
-        ></ProductPageStyles.LongDescription>
+        />
       </ProductPageStyles.ContentWrapper>
     </BasicContainer>
   )

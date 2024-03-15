@@ -16,7 +16,7 @@ export default ShopPage
 
 export async function getStaticProps() {
   //TODO: implement variable products
-  const res = await fetcher(`/wp-json/wc/v3/products?per_page=100&status=publish&type=simple`)
+  const res = await fetcher(`/wp-json/wc/v3/products?per_page=100&status=publish`)
   const products = await res.json()
 
   if (res.status !== 200) {

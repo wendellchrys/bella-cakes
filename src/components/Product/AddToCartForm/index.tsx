@@ -1,46 +1,31 @@
-import React, { useContext, useRef } from 'react'
-import { Loader } from '../../../styles/utils'
-import { CartContext } from '../../../context/cart'
-import { Product } from '../../../types'
+import React, { useRef } from 'react'
 import * as AddToCartFormStyles from './styled'
-import { updateCart } from '../../../utils/functions'
+import { useCart } from '../../../store/useCart'
+import { Product, Variations } from '../../../types'
 
-interface UpdateCartButtonProps {
+interface AddToCartFormProps {
   product: Product
+  variation?: Variations
 }
 
-const AddToCartForm: React.FC<UpdateCartButtonProps> = ({ product }) => {
-  const [cart, setCart, isUpdating, setIsUpdating] = useContext(CartContext)
-  const quantityRef = useRef<any>(null)
+const AddToCartForm: React.FC<AddToCartFormProps> = ({ product, variation }) => {
+  const { addItem, isUpdating, setIsUpdating } = useCart() // Assumindo que você tenha a lógica de `isUpdating` dentro do seu `useCart`
+  const quantityRef = useRef<HTMLInputElement>(null)
 
-  const handleAddToCart = async (e: React.SyntheticEvent, item: Product, quantity: number) => {
+  const handleAddToCart = async (e: React.SyntheticEvent) => {
     e.preventDefault()
-    //lazy form validation :)
+    let quantity = quantityRef.current ? parseInt(quantityRef.current.value) : 1
     quantity = quantity > 0 ? quantity : 1
 
-    setIsUpdating(true)
+    setIsUpdating(true) // Esta função deve ser implementada dentro de `useCart`
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/cocart/v1/add-item?cart_key=${cart.key}`,
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            product_id: String(item.id),
-            quantity: quantity,
-            return_cart: true,
-            //adding image for cart page
-            cart_item_data: { img: item.images[0].src, slug: item.slug },
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
-      if (res.status !== 200) throw Error('Problem with remote cart')
-      const data = await res.json()
+      await addItem({
+        _id: String(variation ? variation.id : product.id),
+        quantity,
+        // Outros campos necessários do seu CartItem
+      })
 
-      setCart(() => updateCart(cart, data))
       setIsUpdating(false)
     } catch (error) {
       console.error(error)
@@ -50,18 +35,9 @@ const AddToCartForm: React.FC<UpdateCartButtonProps> = ({ product }) => {
 
   return (
     <AddToCartFormStyles.Form>
-      <AddToCartFormStyles.InputField
-        type="number"
-        defaultValue="1"
-        min="1"
-        ref={quantityRef}
-      ></AddToCartFormStyles.InputField>
-
-      <AddToCartFormStyles.Btn
-        disabled={isUpdating}
-        onClick={(e) => handleAddToCart(e, product, parseInt(quantityRef.current.value))}
-      >
-        {isUpdating ? <Loader /> : 'Add To Cart'}
+      <AddToCartFormStyles.InputField type="number" defaultValue="1" min="1" ref={quantityRef} />
+      <AddToCartFormStyles.Btn disabled={isUpdating} onClick={handleAddToCart}>
+        {isUpdating ? 'Carregando...' : 'Adicionar'}
       </AddToCartFormStyles.Btn>
     </AddToCartFormStyles.Form>
   )

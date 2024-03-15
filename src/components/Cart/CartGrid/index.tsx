@@ -31,7 +31,11 @@ const CartGrid: React.FC<CartGridProps> = ({ cart, data }) => {
           {cart.items.map((item: CartItem) => {
             const product = getSingleProduct(item.product_id, data)
             return (
-              <SingleCartItem key={item.product_id} item={item} price={parseFloat(product.price)} />
+              <SingleCartItem
+                key={item.product_id}
+                item={item}
+                price={parseFloat(product?.price)}
+              />
             )
           })}
         </CartGridStyles.SecondCol>

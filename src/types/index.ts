@@ -1,3 +1,13 @@
+export interface Variations {
+  src: any
+  image: Variations | undefined
+  price: string | number | boolean | null | undefined
+  attributes: any
+  id: number
+  __typename: string
+  nodes: Node[]
+}
+
 export interface Product {
   name: string
   slug?: string
@@ -18,6 +28,7 @@ export interface Product {
   categories: Array<{
     name: string
   }>
+  variations: Variations
 }
 
 export interface Category {
