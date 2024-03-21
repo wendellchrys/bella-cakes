@@ -1,7 +1,7 @@
 export interface Variations {
   src: any
   image: Variations | undefined
-  price: string | number | boolean | null | undefined
+  price: string
   attributes: any
   id: number
   __typename: string
@@ -11,7 +11,7 @@ export interface Variations {
 export interface Product {
   name: string
   slug?: string
-  id: number
+  id: string
   featured: boolean
   type: string
   status: string
@@ -38,15 +38,9 @@ export interface Category {
   count: { [key: string]: number }
 }
 
-export interface CartItem {
-  key?: string
-  product_id: number
+export type CartItem = Product & {
   quantity: number
-  product_price?: string
-  product_name?: string
-  img?: string
-  slug?: string
-  line_total?: number
+  productVariation?: Variations
 }
 
 export interface Cart {

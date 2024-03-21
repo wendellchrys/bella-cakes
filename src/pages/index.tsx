@@ -17,8 +17,8 @@ const HomePage: NextPage<HomePageProps> = ({ categories, featured }) => {
   return (
     <>
       <PageTitle
-        title="Woo Storefront | Next.Js"
-        description="Unofficial WooCommerce Storefront theme made with Next.Js and Styled-components"
+        title="Bella Cakes"
+        description="Ovos de Páscoa em Goiânia, Bolos e doces para festas e eventos. Encomendas e delivery. Bella Cakes Goiânia."
       />
       {/* TODO refactor hero */}
       <Hero />
@@ -31,7 +31,7 @@ const HomePage: NextPage<HomePageProps> = ({ categories, featured }) => {
             return <SingleCategory key={category.id} category={category} />
           })}
         </BasicGrid>
-        <SectionTitle>Featured Products</SectionTitle>
+        <SectionTitle>Ovos de Páscoa</SectionTitle>
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
           {featured?.map((product: Product) => {
             return (

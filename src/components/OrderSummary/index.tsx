@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Cart, CartItem } from '../../types'
 import useSWR from 'swr'
 import { Loader } from '../../styles/utils'
-import CartTotal from '../Cart/CartTotal'
 
 interface OrderSummaryProps {
   register: any
@@ -24,20 +23,10 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) =
       <OrderSummaryStyles.Grid>
         <OrderSummaryStyles.DescriptionTall>Product</OrderSummaryStyles.DescriptionTall>
         <OrderSummaryStyles.DescriptionTall>Subtotal</OrderSummaryStyles.DescriptionTall>
-        {cart.items.length > 0 &&
-          cart.items.map((item: CartItem) => (
-            <React.Fragment key={item.product_id}>
-              <OrderSummaryStyles.ItemName>
-                {item.product_name} x {item.quantity}
-              </OrderSummaryStyles.ItemName>
-              <OrderSummaryStyles.ItemTotal>
-                ${item.line_total!.toFixed(2)}
-              </OrderSummaryStyles.ItemTotal>
-            </React.Fragment>
-          ))}
+        carrinho
         <OrderSummaryStyles.DescriptionTall>Subtotal</OrderSummaryStyles.DescriptionTall>
         <OrderSummaryStyles.DescriptionWhite shippingOptions={false}>
-          <CartTotal />
+          total
         </OrderSummaryStyles.DescriptionWhite>
 
         <OrderSummaryStyles.DescriptionLow>Shipping</OrderSummaryStyles.DescriptionLow>
@@ -72,7 +61,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ register, errors, cart }) =
 
         <OrderSummaryStyles.DescriptionTall>Total</OrderSummaryStyles.DescriptionTall>
         <OrderSummaryStyles.DescriptionWhite shippingOptions={false}>
-          <CartTotal adds={shippingCost} />
+          total
         </OrderSummaryStyles.DescriptionWhite>
       </OrderSummaryStyles.Grid>
       {errors.shipping ? (

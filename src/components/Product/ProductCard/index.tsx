@@ -1,7 +1,7 @@
 import * as ProductCardStyles from './styled'
 
 import Link from 'next/link'
-import { Product } from '../../../types'
+import { Product, Variations } from '../../../types'
 import React from 'react'
 import ProductPrice from '../ProductPrice'
 
@@ -21,7 +21,6 @@ const SingleProduct: React.FC<ProductItemProps> = ({ product }) => {
 
         <ProductCardStyles.Name>{product.name}</ProductCardStyles.Name>
 
-        <ProductPrice product={product} center={true} size={1} />
       </ProductCardStyles.Wrapper>
     </Link>
   )

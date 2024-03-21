@@ -3,9 +3,10 @@ import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'styled-components'
 import { SWRConfig } from 'swr'
 import Layout from '../containers/Main'
-import CartProvider from '../context/cart'
 import GlobalStyle from '../styles/main'
 import theme from '../styles/theme'
+import '../styles/global.css';
+
 
 import type { AppProps } from 'next/app'
 
@@ -24,11 +25,9 @@ function MyApp({
       <SessionProvider session={pageProps.session}>
         <ThemeProvider theme={theme}>
           <SWRConfig value={{ fetcher: (url: string) => fetch(url).then((r) => r.json()) }}>
-            <CartProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </CartProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </SWRConfig>
           <GlobalStyle />
         </ThemeProvider>

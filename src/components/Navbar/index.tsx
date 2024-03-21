@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
       <NavbarStyles.Container>
         <NavbarStyles.LogoWrapper>
           <Link href="/">
-            <NavbarStyles.LogoText>Logo.lt</NavbarStyles.LogoText>
+            <NavbarStyles.LogoText>Bella Cakes</NavbarStyles.LogoText>
           </Link>
         </NavbarStyles.LogoWrapper>
         <NavbarStyles.MobileIcon onClick={toggle}>

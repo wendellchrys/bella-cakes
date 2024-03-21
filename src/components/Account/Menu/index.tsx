@@ -2,7 +2,6 @@ import React, { SetStateAction, Dispatch, useContext } from 'react'
 import { signOut } from 'next-auth/react'
 import * as AccountMenuStyles from './styled'
 import { useRouter } from 'next/router'
-import { CartContext } from '../../../context/cart'
 import { initCart } from '../../../utils/functions'
 
 interface AccountMenuProps {
@@ -11,11 +10,9 @@ interface AccountMenuProps {
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ setView }) => {
   const router = useRouter()
-  const [, setCart] = useContext(CartContext)
 
   const handleLogout = async (options: any) => {
     const newCart = await initCart()
-    setCart(newCart)
     await signOut(options)
     router.push('/login')
   }

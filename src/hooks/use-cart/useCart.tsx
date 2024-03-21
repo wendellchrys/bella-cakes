@@ -1,11 +1,12 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { Product } from '../../types'
+import { Product, Variations } from '../../types'
 
 export type ProductsArray = Product[]
 
 export type CartItem = Product & {
   quantity: number
+  productVariation?: Variations
 }
 
 interface CartState {
@@ -13,21 +14,19 @@ interface CartState {
   addItem: (item: CartItem) => void
   removeItem: (item: CartItem) => void
   updateItemQuantity: (id: string, quantity: number) => void
+  isUpdating: boolean
+  setIsUpdating: (isUpdating: boolean) => void
 }
 
 export const useCart = create(
   persist<CartState>(
-    (
-      set: (arg0: {
-        (state: any): { items: any }
-        (state: any): { items: any }
-        (state: any): { items: any }
-      }) => any,
-    ) => ({
+    (set) => ({
       items: [],
+      isUpdating: false,
+      setIsUpdating: (isUpdating: boolean) => set(() => ({ isUpdating })),
       addItem: (item: CartItem) =>
         set((state: { items: any[] }) => {
-          const itemIndex = state.items.findIndex((i: { _id: any }) => i._id === item._id)
+          const itemIndex = state.items.findIndex((i: { id: any }) => i.id === item.id)
           if (itemIndex > -1) {
             // Item já existe, apenas atualize a quantidade
             let newItems = state.items.map((i: { quantity: any }, index: any) =>
@@ -43,12 +42,12 @@ export const useCart = create(
         }),
       removeItem: (item: CartItem) =>
         set((state: { items: any[] }) => ({
-          items: state.items.filter((product: { _id: any }) => product._id !== item._id),
+          items: state.items.filter((product: { id: any }) => product.id !== item.id),
         })),
       updateItemQuantity: (id: string, quantity: number) =>
-        set((state: { items: any[] }) => ({
-          items: state.items.map((item: { _id: string }) =>
-            item._id === id ? { ...item, quantity: Math.max(1, quantity) } : item,
+        set((state: CartState) => ({
+          items: state.items.map((item: CartItem) =>
+            item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item,
           ),
         })),
     }),
@@ -61,5 +60,5 @@ export const useCart = create(
 
 export const isInCart = (id: string): boolean => {
   const items = useCart.getState().items
-  return items.some((item: { _id: string }) => item._id === id)
+  return items.some((item: CartItem) => item.id === id)
 }

@@ -33,7 +33,7 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product, vari
           <ProductPageStyles.InfoWrapper>
             <ProductPageStyles.InfoWrapperCol>
               <ProductPageStyles.Name>{product.name}</ProductPageStyles.Name>
-              <ProductPrice product={product} center={false} size={1.3} />
+              <ProductPrice product={product} variations={variations} center={false} size={1.3} />
               <ProductPageStyles.ShortDescription
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
               />
