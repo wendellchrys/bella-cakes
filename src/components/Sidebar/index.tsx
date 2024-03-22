@@ -22,21 +22,6 @@ const Sidebar: React.FC<SidebarProps> = ({ toggle, isOpen }) => {
               <SidebarStyles.LinkText>Home</SidebarStyles.LinkText>
             </Link>
           </SidebarStyles.LinkWrapper>
-          <SidebarStyles.LinkWrapper>
-            <Link href="/shop">
-              <SidebarStyles.LinkText>Shop</SidebarStyles.LinkText>
-            </Link>
-          </SidebarStyles.LinkWrapper>
-          <SidebarStyles.LinkWrapper>
-            <Link href="/about">
-              <SidebarStyles.LinkText>About</SidebarStyles.LinkText>
-            </Link>
-          </SidebarStyles.LinkWrapper>
-          <SidebarStyles.LinkWrapper>
-            <Link href="/contact">
-              <SidebarStyles.LinkText>Contact</SidebarStyles.LinkText>
-            </Link>
-          </SidebarStyles.LinkWrapper>
         </SidebarStyles.Menu>
       </SidebarStyles.Wrapper>
       <SidebarStyles.IconHolder>

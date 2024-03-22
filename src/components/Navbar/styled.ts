@@ -77,13 +77,13 @@ export const Container = styled.div`
   position: relative;
 `
 export const Nav = styled.nav<{ scrollNav: boolean }>`
-  background: ${({ scrollNav }) => (scrollNav ? 'transparent' : '#ffdcd3')};
+  /* background: ${({ scrollNav }) => (scrollNav ? 'transparent' : '#ffdcd3')}; */
+  background: #ffdcd3;
   transition: all 0.2s ease-in;
   height: 80px;
   width: 100%;
 
   //padding-top: ${({ scrollNav }) => (scrollNav ? '40px' : '0px')};
-  margin-top: -80px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
