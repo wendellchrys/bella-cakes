@@ -67,7 +67,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
         </CheckoutPageStyles.Address>
         <CheckoutPageStyles.Order>
           <Subtitle>Your order</Subtitle>
-          <OrderSummary register={register} cart={cart} errors={errors} />
+          {/*<OrderSummary register={register} cart={cart} errors={errors} />*/}
         </CheckoutPageStyles.Order>
         <CheckoutPageStyles.Payment>
           <Subtitle>Pay with credit card</Subtitle>
