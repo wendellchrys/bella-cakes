@@ -1,13 +1,14 @@
+import Link from 'next/link'
 import React from 'react'
 import CookieConsent from 'react-cookie-consent'
 
-interface CookiesConsentProps {}
+interface CookiesConsentProps { }
 
 const CookiesConsent: React.FC<CookiesConsentProps> = () => {
   return (
     <>
       <CookieConsent
-        buttonText="Yes!"
+        buttonText="Aceito!"
         style={{
           background: 'rgba(0,0,0,0.7)',
           padding: '0px',
@@ -16,15 +17,15 @@ const CookiesConsent: React.FC<CookiesConsentProps> = () => {
         }}
         buttonStyle={{
           textAlign: 'center',
-          background: '#b5e896',
-          borderRadius: '30px',
-          color: '#000',
-          fontSize: '18px',
+          background: '#954732',
+          borderRadius: '20px',
+          color: '#fff',
+          fontSize: '17px',
           fontWeight: '600',
-          padding: '10px 30px',
+          padding: '5px 40px',
         }}
       >
-        Want cookies?
+        Este site utilize cookies para um melhor funcionamento, você pode ver mais detalhes <Link href="/cookies"><span style={{ color: '#cecece', cursor: 'pointer' }}>clicando aqui.</span></Link>
       </CookieConsent>
     </>
   )

@@ -16,7 +16,7 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
   return (
     <NavIconStyles.IconHolder scrollNav={scrollNav} isMobile={isMobile}>
 
-      <Link href="/cart" passHref>
+      <Link href="/carrinho" passHref>
         <NavIconStyles.CartIconWrapper>
           Carrinho <NavIconStyles.CartIcon />
         </NavIconStyles.CartIconWrapper>

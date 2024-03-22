@@ -20,7 +20,7 @@ const ProductPrice: FC<ProductPriceProps> = ({ product, variations, center, size
     return <Loader />
   }
 
-  const { sale_price, regular_price } = getSingleProduct(Number(product.id), data)
+  const { sale_price, regular_price } = getSingleProduct(product.id, data)
 
   return (
     <ProductPriceStyles.Wrapper center={center}>

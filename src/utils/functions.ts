@@ -87,12 +87,12 @@ export const getCart = async (cartKey: string) => {
   }
 }
 
-export const getSingleProduct = (productId: number, data: any) => {
+export const getSingleProduct = (productId: string, data: any) => {
   const product = data.find((item: Product) => {
-    return item.id === productId.toString();
-  });
+    return item.id === productId
+  })
 
-  return product;
+  return product
 }
 
 
