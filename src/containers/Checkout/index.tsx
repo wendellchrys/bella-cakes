@@ -6,7 +6,6 @@ import AddressForm from '../../components/AddressForm'
 import StripePayment from '../../components/StripePayment'
 import OrderSummary from '../../components/OrderSummary'
 import { BasicContainer, Loader, Subtitle } from '../../styles/utils'
-import { CartContext } from '../../context/cart'
 import { NextPage } from 'next'
 import { createOrder, initCart } from '../../utils/functions'
 import { Customer } from '../../types'
@@ -15,7 +14,6 @@ interface CheckoutPageContainerProps {}
 
 const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
   const [chosenPaymentMethod, setChosenPaymentMethod] = useState('stripe')
-  const [cart, setCart] = useContext(CartContext)
   const { register, handleSubmit, errors } = useForm()
   const [isProcessing, setIsProcessing] = useState(false)
   const [serverMsg, setServerMsg] = useState('')
@@ -24,7 +22,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
 
   const onSubmit = async (customer: Customer) => {
     try {
-      if (!cart || cart.items.length === 0 || !stripe || !elements) return
+      if ( !stripe || !elements) return
 
       setIsProcessing(true)
       let payment: any
@@ -47,9 +45,7 @@ const CheckoutPageContainer: NextPage<CheckoutPageContainerProps> = () => {
 
       if (!payment) throw 'No valid payment method'
       const { message } = await createOrder(customer, payment, cart)
-      const newCart = await initCart()
       if (message === 'Success') {
-        setCart(newCart)
         setServerMsg('Thank you for your order. Check your email for details!')
       } else {
         setServerMsg('Sorry something went wrong. Please try again later...')
