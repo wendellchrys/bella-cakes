@@ -45,6 +45,7 @@ export const ImgWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   transform-origin: 0 0;
+  border-radius: 1rem;
 
   &:hover {
     ${Img} {

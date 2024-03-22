@@ -32,18 +32,25 @@ export const Info = styled.div`
 export const Name = styled.h2`
   font-size: 1rem;
   margin-bottom: 5px;
+  color: ${({ theme }) => theme.primaryBlack};
 `;
 
 export const Price = styled.span`
-  color: #333;
+  color: ${({ theme }) => theme.primaryBlack};
   font-weight: bold;
 `;
 
 export const RemoveButton = styled.button`
+  display: flex;
+  align-items: center;
   background: none;
   color: #e63946;
   border: none;
   cursor: pointer;
   margin-top: auto;
   text-align: right;
+
+  & > svg {
+    margin-right: 5px;
+  }
 `;

@@ -1,8 +1,8 @@
 const defaultTheme = {
   lightMediumBg: '#f2f2f2',
-  lightWhiteBg: '#fff',
+  lightWhiteBg: '#fcf2ed',
   //text button colors
-  primaryBlack: '#0d0d0d',
+  primaryBlack: '#954732',
   secondaryBlack: '#898989',
   primaryText: '#4c4e4e',
   primaryWhite: '#fafafa',

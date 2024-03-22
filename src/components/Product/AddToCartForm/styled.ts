@@ -34,11 +34,12 @@ export const Btn = styled.button`
   text-shadow: none;
 
   transition: all 0.2s ease-in-out;
-  background: #333333;
-  border-color: #333333;
+  background: ${({ theme }) => theme.primaryBlack};
+  border: none;
   color: #fff;
-  width: calc(120px + 0.2vw);
-  height: 41px;
+  width: calc(150px + 0.2vw);
+  border-radius: 5px;
+  height: 40px;
   //display: inline-block;
   transition: all 0.2s ease-in-out;
 `

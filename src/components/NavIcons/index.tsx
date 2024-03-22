@@ -18,11 +18,11 @@ const NavigationIcons: React.FC<NavigationIconsProps> = ({ scrollNav, isMobile }
 
       <Link href="/cart" passHref>
         <NavIconStyles.CartIconWrapper>
-          <NavIconStyles.CartIcon />
+          Carrinho <NavIconStyles.CartIcon />
         </NavIconStyles.CartIconWrapper>
       </Link>
 
-      <NavIconStyles.AccIcon onClick={() => router.push(session ? '/account' : '/login')} />
+      {/* <NavIconStyles.AccIcon onClick={() => router.push(session ? '/account' : '/login')} /> */}
     </NavIconStyles.IconHolder>
   )
 }

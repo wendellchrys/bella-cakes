@@ -4,6 +4,10 @@ import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
 import NavigationIcons from '../NavIcons'
 
+import Image from 'next/image'
+
+import logo from '@/assets/images/logo.png'
+
 interface NavbarProps {
   toggle: () => void
 }
@@ -30,7 +34,14 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
       <NavbarStyles.Container>
         <NavbarStyles.LogoWrapper>
           <Link href="/">
-            <NavbarStyles.LogoText>Bella Cakes</NavbarStyles.LogoText>
+            <NavbarStyles.Logo>
+              <Image
+                src={logo}
+                width={300}
+                height={60}
+                alt="Bella Cakes"
+              />
+            </NavbarStyles.Logo>
           </Link>
         </NavbarStyles.LogoWrapper>
         <NavbarStyles.MobileIcon onClick={toggle}>
@@ -43,20 +54,15 @@ const Navbar: React.FC<NavbarProps> = ({ toggle }) => {
             </Link>
           </NavbarStyles.Item>
           <NavbarStyles.Item>
+            <Link href="https://wa.me/5562993808065" target="_blank" rel="noopener noreferrer">
+              <NavbarStyles.LinkText>Whatsapp</NavbarStyles.LinkText>
+            </Link>
+          </NavbarStyles.Item>
+          {/* <NavbarStyles.Item>
             <Link href="/shop">
               <NavbarStyles.LinkText>Shop</NavbarStyles.LinkText>
             </Link>
-          </NavbarStyles.Item>
-          <NavbarStyles.Item>
-            <Link href="/about">
-              <NavbarStyles.LinkText>About</NavbarStyles.LinkText>
-            </Link>
-          </NavbarStyles.Item>
-          <NavbarStyles.Item>
-            <Link href="/contact">
-              <NavbarStyles.LinkText>Contact</NavbarStyles.LinkText>
-            </Link>
-          </NavbarStyles.Item>
+          </NavbarStyles.Item> */}
         </NavbarStyles.Menu>
         <NavigationIcons scrollNav={scrollNav} isMobile={false} />
       </NavbarStyles.Container>

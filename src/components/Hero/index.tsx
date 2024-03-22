@@ -1,14 +1,19 @@
 import React from 'react'
 import * as HeroStyles from './styled'
+import Image from 'next/image'
+
+import banner from '@/assets/images/banner.jpg'
 
 const Hero: React.FC = () => {
   return (
     <HeroStyles.Wrapper>
       <HeroStyles.Bg>
-        <HeroStyles.Heading>Welcome</HeroStyles.Heading>
-        <HeroStyles.Subheading>
-          This is your unofficial WooCommerce Storefront theme made with Next.js
-        </HeroStyles.Subheading>
+        <Image
+          src={banner}
+          width={1920}
+          height={500}
+          alt="Ovos de Páscoa 2024"
+        />
       </HeroStyles.Bg>
     </HeroStyles.Wrapper>
   )

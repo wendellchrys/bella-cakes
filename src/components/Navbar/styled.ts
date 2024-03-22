@@ -16,14 +16,9 @@ export const LogoWrapper = styled.div`
   padding: 1rem;
 `
 
-export const LogoText = styled.a`
-  color: ${({ theme }) => theme.primaryPurple};
+export const Logo = styled.div`
   cursor: pointer;
-  font-size: calc(1.8rem + 0.1vw);
-  letter-spacing: 2px;
-  opacity: 0.95;
-
-  font-weight: 600;
+  max-width: 300px;
 `
 
 export const MobileIcon = styled.div`
@@ -82,7 +77,7 @@ export const Container = styled.div`
   position: relative;
 `
 export const Nav = styled.nav<{ scrollNav: boolean }>`
-  background: ${({ scrollNav, theme }) => (scrollNav ? 'transparent' : theme.primaryBlack)};
+  background: ${({ scrollNav }) => (scrollNav ? 'transparent' : '#ffdcd3')};
   transition: all 0.2s ease-in;
   height: 80px;
   width: 100%;
@@ -98,7 +93,7 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   z-index: 99;
 
   ${LinkText} {
-    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryBlack : theme.primaryWhite)};
+    color: ${({ theme }) => theme.primaryBlack};
 
     &:hover {
       transition: all 0.2s ease-in-out;
@@ -107,6 +102,6 @@ export const Nav = styled.nav<{ scrollNav: boolean }>`
   }
 
   ${MobileIcon} {
-    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
+    color: ${({ theme }) => theme.primaryBlack};
   }
 `

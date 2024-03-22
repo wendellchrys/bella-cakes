@@ -4,6 +4,7 @@ import { BasicGrid, BasicContainer } from '../../styles/utils'
 import * as ProductPageStyles from './styled'
 import AddToCartForm from '../../components/Product/AddToCartForm'
 import ProductPrice from '../../components/Product/ProductPrice'
+import { formatPrice } from '@/utils'
 
 interface ProductPageContentProps {
   product: Product
@@ -15,11 +16,11 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product, vari
   const [selectedVariation, setSelectedVariation] = useState<Variations | undefined>(undefined)
 
   // Lidar com a mudança de seleção de variação
-  const handleVariationChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const variationId = parseInt(event.target.value, 10)
-    const selectedVar = variations.find((variation) => variation.id === variationId)
-    setSelectedVariation(selectedVar)
-  }
+  const handleVariationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const variationId = parseInt(event.target.value, 10);
+    const selectedVar = variations.find((variation) => variation.id === variationId);
+    setSelectedVariation(selectedVar);
+  };
 
   return (
     <BasicContainer>
@@ -38,25 +39,25 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product, vari
                 dangerouslySetInnerHTML={{ __html: product.short_description }}
               />
               {variations.length > 0 && (
-                <div>
-                  <label htmlFor="product-variations">Escolha uma Variação:</label>
-                  <select id="product-variations" onChange={handleVariationChange} defaultValue="">
-                    <option disabled value="">
-                      Selecione
-                    </option>
+                <ProductPageStyles.VariationsContainer>
+                  <label>Escolha uma Variação:</label>
+                  <ProductPageStyles.RadioWrapper>
                     {variations.map((variation) => (
-                      <option key={variation.id} value={variation.id}>
+                      <ProductPageStyles.RadioLabel key={variation.id}>
+                        <ProductPageStyles.RadioButton
+                          type="radio"
+                          name="product-variations"
+                          value={variation.id}
+                          onChange={handleVariationChange}
+                        />
                         {variation.attributes
-                          .map(
-                            (attr: { name: string; option: string }) =>
-                              `${attr.name}: ${attr.option}`,
-                          )
+                          .map((attr: { name: string; option: string }) => `${attr.name}: ${attr.option}`)
                           .join(', ')}{' '}
-                        - R${variation.price}
-                      </option>
+                        - <ProductPageStyles.Price>{formatPrice(Number(variation.price))}</ProductPageStyles.Price>
+                      </ProductPageStyles.RadioLabel>
                     ))}
-                  </select>
-                </div>
+                  </ProductPageStyles.RadioWrapper>
+                </ProductPageStyles.VariationsContainer>
               )}
             </ProductPageStyles.InfoWrapperCol>
             <ProductPageStyles.InfoWrapperCol>

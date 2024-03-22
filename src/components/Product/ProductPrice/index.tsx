@@ -4,7 +4,7 @@ import useSwr from 'swr'
 import { Product, Variations } from '../../../types'
 import { Loader } from '../../../styles/utils'
 import { filteredVariantPrice, getSingleProduct } from '../../../utils/functions'
-import { findPriceRange } from '@/utils/findPriceRange'
+import { findPriceRange, formatPrice } from '@/utils';
 
 interface ProductPriceProps {
   product: Product
@@ -20,8 +20,6 @@ const ProductPrice: FC<ProductPriceProps> = ({ product, variations, center, size
     return <Loader />
   }
 
-  console.log('variation', variations)
-
   const { sale_price, regular_price } = getSingleProduct(Number(product.id), data)
 
   return (
@@ -29,17 +27,17 @@ const ProductPrice: FC<ProductPriceProps> = ({ product, variations, center, size
       {!sale_price ? (
         <ProductPriceStyles.Regular isOnSale={false} size={size}>
           {variations && findPriceRange(variations)}
-          {!variations && parseFloat(regular_price).toFixed(2)}
+          {!variations && formatPrice(regular_price)}
         </ProductPriceStyles.Regular>
       ) : (
         <>
           <ProductPriceStyles.Regular isOnSale={true} size={size}>
             {/* {variations && filteredVariantPrice(variations)} */}
-            {!variations && parseFloat(regular_price).toFixed(2)}
+            {!variations && formatPrice(regular_price)}
           </ProductPriceStyles.Regular>
           <ProductPriceStyles.Sale size={size}>
             {/* {variations && filteredVariantPrice(variations)} */}
-            {!variations && parseFloat(sale_price).toFixed(2)}
+            {!variations && formatPrice(sale_price)}
           </ProductPriceStyles.Sale>
         </>
       )}

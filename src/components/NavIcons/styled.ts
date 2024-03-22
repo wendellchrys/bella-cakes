@@ -10,7 +10,11 @@ export const Total = styled.span<{ hasItems: boolean }>`
 `
 
 export const CartIconWrapper = styled.div`
+  display: flex;
   position: relative;
+  cursor: pointer;
+  color: ${({ theme }) => theme.primaryBlack};
+
 `
 
 export const CartBadge = styled.button<{ hasItems: boolean }>`
@@ -53,7 +57,7 @@ export const IconHolder = styled.div<{ scrollNav: boolean; isMobile: boolean }>`
   }
 
   ${CartIcon} {
-    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
+    color: ${({ theme }) => theme.primaryBlack};
     margin: ${({ isMobile }) => (isMobile ? '0.5rem' : '0 0.5rem')};
   }
 
@@ -61,6 +65,6 @@ export const IconHolder = styled.div<{ scrollNav: boolean; isMobile: boolean }>`
     top: ${({ isMobile }) => (isMobile ? '-5px' : '-15px')};
   }
   ${AccIcon} {
-    color: ${({ scrollNav, theme }) => (scrollNav ? theme.primaryText : theme.primaryWhite)};
+    color: ${({ theme }) => theme.primaryBlack};
   }
 `

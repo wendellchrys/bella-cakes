@@ -14,15 +14,10 @@ import * as CartListStyles from './styles';
 
 // import items from './mock';
 
-export type CartListProps = {
-  hasButton?: boolean;
-};
 
-export const CartList = ({ hasButton = false }: CartListProps) => {
+export const CartList = () => {
   const items = useCart((state) => state.items);
   const [total, setTotal] = useState('0');
-
-  console.log('items', items)
 
   useEffect(() => {
     const newTotal = items.reduce(
@@ -48,17 +43,11 @@ export const CartList = ({ hasButton = false }: CartListProps) => {
 
           <div className="mt-6">
             {items.length > 0 && (
-              <Button onClick={() => sendOrderWhatsApp(items, total)} fullWidth>
-                Finalizar Pedido
-              </Button>
-            )}
-
-            {hasButton && (
-              <Link href="/cart" passHref>
-                <Button as="a" fullWidth>
-                  Ver Carrinho
+              <CartListStyles.Button>
+                <Button onClick={() => sendOrderWhatsApp(items, total)} fullWidth>
+                  Finalizar Pedido
                 </Button>
-              </Link>
+              </CartListStyles.Button>
             )}
           </div>
         </>

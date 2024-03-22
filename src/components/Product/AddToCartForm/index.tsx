@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import * as AddToCartFormStyles from './styled'
 import { useCart } from '@/hooks/use-cart'
+import { useToast } from '@/components/UseToast';
 import { Product, Variations } from '../../../types'
 
 interface AddToCartFormProps {
@@ -12,8 +13,14 @@ const AddToCartForm: React.FC<AddToCartFormProps> = ({ product, variation }) => 
   const { addItem, isUpdating, setIsUpdating } = useCart()
   const quantityRef = useRef<HTMLInputElement>(null)
 
+  const { showToast } = useToast();
+
   const handleAddToCart = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (product.variations.length > 0 && !variation) {
+      showToast(`Selecione uma variação do produto!`, 'error');
+      return;
+    }
     let quantity = quantityRef.current ? parseInt(quantityRef.current.value) : 1;
     quantity = quantity > 0 ? quantity : 1;
 
@@ -38,14 +45,17 @@ const AddToCartForm: React.FC<AddToCartFormProps> = ({ product, variation }) => 
         productVariation: variation
       });
 
+      showToast(`${product.name} adicionado com sucesso!`, 'success');
       setIsUpdating(false);
+
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setIsUpdating(false);
     }
   };
 
   return (
+
     <AddToCartFormStyles.Form>
       <AddToCartFormStyles.InputField type="number" defaultValue="1" min="1" ref={quantityRef} />
       <AddToCartFormStyles.Btn disabled={isUpdating} onClick={handleAddToCart}>

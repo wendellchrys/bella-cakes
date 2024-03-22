@@ -28,7 +28,7 @@ export interface Product {
   categories: Array<{
     name: string
   }>
-  variations: Variations
+  variations: Variations[]
 }
 
 export interface Category {

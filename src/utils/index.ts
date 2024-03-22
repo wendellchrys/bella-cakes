@@ -1,4 +1,5 @@
 export * from './convertPriceToNumber'
+export * from './findPriceRange'
 export * from './formatPrice'
 export * from './getFiltersValues'
 export * from './getLinkWhatsapp'

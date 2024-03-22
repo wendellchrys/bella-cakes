@@ -5,7 +5,6 @@ import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Loader, SectionTitle } from '../../styles/utils'
 import Link from 'next/link'
-import { CartContext } from '../../context/cart'
 
 interface AuthFormProps {
   isRegister: boolean
@@ -24,7 +23,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const { register, handleSubmit, errors, watch } = useForm()
   const [submiting, setSubmiting] = useState(false)
   const [response, setResponse] = useState('')
-  const [cart] = useContext(CartContext)
   const password = useRef({})
   const router = useRouter()
   password.current = watch('password', '')
@@ -34,8 +32,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ isRegister }) => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       setSubmiting(true)
-      const cartData = JSON.stringify(cart)
-      data = { ...data, cartData }
+      data = { ...data }
       if (isRegister) {
         const req = await fetch('/api/customers/create', {
           method: 'POST',

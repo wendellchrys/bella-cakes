@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const BasicContainer = styled.section`
-  padding: 5rem 0;
+  padding: 2rem 0;
   max-width: 1200px;
   width: 95%;
   margin: 0 auto;
@@ -46,6 +46,7 @@ export const SectionTitle = styled.h2`
   text-align: center;
   padding: 1rem;
   margin: 1rem;
+  color: ${({ theme }) => theme.primaryBlack};
 `
 
 export const MainButton = styled.button``

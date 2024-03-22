@@ -24,14 +24,14 @@ const HomePage: NextPage<HomePageProps> = ({ categories, featured }) => {
       <Hero />
 
       <BasicContainer id="Categories">
-        <SectionTitle>Shop by Category</SectionTitle>
+        {/* <SectionTitle>Shop by Category</SectionTitle>
 
         <BasicGrid lg={3} md={3} sm={2} xs={1}>
           {categories?.map((category: Category) => {
             return <SingleCategory key={category.id} category={category} />
           })}
-        </BasicGrid>
-        <SectionTitle>Ovos de Páscoa</SectionTitle>
+        </BasicGrid> */}
+        <SectionTitle>Ovos de Páscoa 2024</SectionTitle>
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
           {featured?.map((product: Product) => {
             return (

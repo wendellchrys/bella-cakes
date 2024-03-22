@@ -24,24 +24,22 @@ export const ProductItem = (item: CartItem) => {
     updateItemQuantity(item.id, quantity);
   };
 
-  console.log('item', item)
-
   return (
     <ProductItemStyles.Container>
-      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-        {/* <img
-          src={item.image.src} // Use your item image property here
+      {/* <ProductItemStyles.Image>
+        <Image
+          src={item.images[0].src}
+          width={100}
+          height={100}
           alt={item.name}
-          className="h-full w-full object-cover object-center"
-        /> */}
-      </div>
+        />
+      </ProductItemStyles.Image> */}
       <ProductItemStyles.FlexRow>
         <ProductItemStyles.Info>
           <ProductItemStyles.Name>
             {item.name} - Tamanho: {item.productVariation?.attributes[0].option}
           </ProductItemStyles.Name>
           <ProductItemStyles.Price>{formatPrice(Number(item.productVariation ? item.productVariation.price : item.price))}</ProductItemStyles.Price>
-          <p className="mt-1 text-sm text-gray-500">{item.status}</p>
         </ProductItemStyles.Info>
         <ProductItemStyles.Info>
           <QuantitySelector
@@ -50,7 +48,7 @@ export const ProductItem = (item: CartItem) => {
             onQuantityChange={(q) => handleQuantityChange(q)}
           />
           <ProductItemStyles.RemoveButton onClick={() => removeItem(item)}>
-            Remover
+            <FaTrash /> Remover
           </ProductItemStyles.RemoveButton>
         </ProductItemStyles.Info>
       </ProductItemStyles.FlexRow>

@@ -17,7 +17,7 @@ export const Sale = styled.p<{ size: number }>`
 `
 
 export const Regular = styled.p<{ isOnSale: boolean; size: number }>`
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primaryBlack};
   text-decoration: ${({ isOnSale }) => (isOnSale ? `line-through` : `none`)};
   font-weight: bolder;
   font-size: ${({ isOnSale, size }) =>

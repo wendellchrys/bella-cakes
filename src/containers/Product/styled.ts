@@ -21,6 +21,7 @@ export const ImgWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
+  border-radius: 1.5rem;
 `
 
 export const Img = styled.img`
@@ -31,6 +32,7 @@ export const Img = styled.img`
 
   object-fit: cover;
   transition: 0.5s all;
+  border-radius: 1.5rem;
 `
 
 export const InfoWrapper = styled.div`
@@ -60,6 +62,7 @@ export const Name = styled.h2`
   font-weight: 200;
   letter-spacing: 1px;
   padding-top: 2rem;
+  color: ${({ theme }) => theme.primaryBlack};
 `
 
 export const ShortDescription = styled.div`
@@ -127,3 +130,35 @@ export const Category = styled.p`
 export const CategorySpan = styled.span`
   text-decoration: underline;
 `
+
+export const VariationsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export const RadioWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RadioLabel = styled.label`
+  margin: 10px 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: ${({ theme }) => `1px solid ${theme.primaryBlack}`};
+  padding: 5px;
+  border-radius: 5px;
+`;
+
+export const RadioButton = styled.input`
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: ${({ theme }) => theme.primaryBlack};
+`;
+
+export const Price = styled.b`
+  margin-left: 0.5rem; 
+`;

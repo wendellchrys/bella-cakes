@@ -3,17 +3,18 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 5rem 0.75rem 0 0.75rem;
-  max-width: 1200px;
+  padding: 5rem 0.75rem 0 0.75rem 0;
+  width: 100%;
   margin: 0 auto;
 `
 
 export const Bg = styled.div`
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: auto;
+  min-height: 500px;
 
-  background: url('./hero.jpg');
+  
   background-position: center;
   background-size: cover;
   //border-radius: 30px;
