@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
     <HeroStyles.Wrapper>
       <HeroStyles.Bg>
         <Image
-          src="./banner.jpg"
+          src={`${process.env.NEXT_PUBLIC_WP_API_URL!}/wp-content/uploads/2024/03/sistema-bella-cakes-banners-01.jpg`}
           width={1920}
           height={500}
           alt="Ovos de Páscoa 2024"
