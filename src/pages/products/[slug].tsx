@@ -41,16 +41,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=30`)
-  const products = await productsRes.json()
+  try {
+    const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=30`)
+    const products = await productsRes.json()
 
-  const publishedProducts = products.filter(
-    (product: { [key: string]: any }) => product.status === 'publish',
-  )
+    // Verifica se products é um array antes de filtrar
+    if (!Array.isArray(products)) {
+      throw new Error('A resposta da API não é um array')
+    }
 
-  const paths = publishedProducts.map((product: Product) => ({
-    params: { slug: String(product.slug) },
-  }))
+    const publishedProducts = products.filter(
+      (product: { [key: string]: any }) => product.status === 'publish',
+    )
 
-  return { paths, fallback: false }
+    const paths = publishedProducts.map((product: Product) => ({
+      params: { slug: String(product.slug) },
+    }))
+
+    return { paths, fallback: false }
+  } catch (error) {
+    console.error('Erro ao obter os produtos:', error)
+    return { paths: [], fallback: false } // Retorna um array vazio em caso de erro
+  }
 }
