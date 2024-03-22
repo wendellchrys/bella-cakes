@@ -37,7 +37,12 @@ export const ProductItem = (item: CartItem) => {
       <ProductItemStyles.FlexRow>
         <ProductItemStyles.Info>
           <ProductItemStyles.Name>
-            {item.name} - Tamanho: {item.productVariation?.attributes[0].option}
+            {item.name}
+            {item.productVariation && (
+              <>
+                - Tamanho: {item.productVariation?.attributes[0].option}
+              </>
+            )}
           </ProductItemStyles.Name>
           <ProductItemStyles.Price>{formatPrice(Number(item.productVariation ? item.productVariation.price : item.price))}</ProductItemStyles.Price>
         </ProductItemStyles.Info>
