@@ -89,11 +89,12 @@ export const getCart = async (cartKey: string) => {
 
 export const getSingleProduct = (productId: number, data: any) => {
   const product = data.find((item: Product) => {
-    return item.id === productId
-  })
+    return item.id === productId.toString();
+  });
 
-  return product
+  return product;
 }
+
 
 export const updateCart = (cart: Cart, data: Response) => {
   const newCart = { ...cart }
