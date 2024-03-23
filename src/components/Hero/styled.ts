@@ -9,15 +9,15 @@ export const Wrapper = styled.div`
 `
 
 export const Bg = styled.div`
+  display: flex;
   position: relative;
   width: 100%;
   height: auto;
   min-height: 500px;
 
-  
-  background-position: center;
-  background-size: cover;
-  //border-radius: 30px;
+  @media only screen and (max-width: 768px){
+    min-height: 600px;
+  }
 `
 
 export const Heading = styled.h1`

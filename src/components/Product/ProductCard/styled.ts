@@ -25,12 +25,12 @@ export const SalePrice = styled.p`
 `
 
 export const Name = styled.p`
-  font-size: calc(1rem + 0.2vw);
+  font-size: calc(1.2rem + 0.2vw);
   padding-bottom: 0.25rem;
   align-self: auto;
   letter-spacing: 0.5px;
   transition: all 0.1s ease-in-out;
-  color: ${({ theme }) => theme.primaryText};
+  color: ${({ theme }) => theme.primaryBlack};
   margin: 0 1rem;
 `
 
@@ -41,7 +41,7 @@ export const Img = styled.img`
   transition: transform 0.25s, visibility 0.25s ease-in;
 `
 export const ImgWrapper = styled.div`
-  height: 300px;
+  height: 400px;
   width: 100%;
   overflow: hidden;
   transform-origin: 0 0;

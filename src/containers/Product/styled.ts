@@ -72,7 +72,8 @@ export const ShortDescription = styled.div`
 export const LongDescription = styled.div`
   font-size: calc(1rem + 0.1vw);
   margin-top: 1rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
+  /* padding: 1rem; */
 
   @media screen and (max-width: 768px) {
     max-width: 480px;
@@ -136,6 +137,11 @@ export const VariationsContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
+
+  & > label {
+    color: ${({ theme }) => theme.primaryBlack};
+    font-weight: 600;
+  }
 `;
 
 export const RadioWrapper = styled.div`
