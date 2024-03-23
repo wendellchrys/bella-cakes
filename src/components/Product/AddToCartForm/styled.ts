@@ -7,7 +7,7 @@ export const Form = styled.form`
 `
 
 export const InputField = styled.input`
-  padding: 0.5em;
+  padding: 0.4em;
   margin-right: 1rem;
   max-width: 60px;
   font-size: 1rem;
@@ -16,6 +16,8 @@ export const InputField = styled.input`
   color: #43454b;
   border: none;
   font-weight: 400;
+  border-radius: 0.4rem;
+  border: ${({ theme }) => `1px solid ${theme.primaryBlack}`};
 
   &[type='number']::-webkit-inner-spin-button {
     opacity: 1;

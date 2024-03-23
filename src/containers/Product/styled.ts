@@ -60,20 +60,29 @@ export const InfoWrapperCol = styled.div`
 export const Name = styled.h2`
   font-size: calc(2rem + 0.1vw);
   font-weight: 200;
+  line-height: 1.8rem;
   letter-spacing: 1px;
   padding-top: 2rem;
+  margin-bottom: 1rem;
   color: ${({ theme }) => theme.primaryBlack};
 `
 
 export const ShortDescription = styled.div`
   padding: 0.5rem 0;
   font-size: calc(1.2rem + 0.1vw);
+
+  & > br, & > p {
+    padding: 0.5rem 0;
+  }
 `
 export const LongDescription = styled.div`
   font-size: calc(1rem + 0.1vw);
   margin-top: 1rem;
-  padding-bottom: 1rem;
   /* padding: 1rem; */
+
+  & > br, & > p {
+    padding: 0.5rem 0;
+  }
 
   @media screen and (max-width: 768px) {
     max-width: 480px;

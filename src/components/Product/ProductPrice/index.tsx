@@ -20,24 +20,31 @@ const ProductPrice: FC<ProductPriceProps> = ({ product, variations, center, size
     return <Loader />
   }
 
+  console.log('variants', variations)
+
   const { sale_price, regular_price } = getSingleProduct(product.id, data)
+
+  function renderPrice(variations: Variations[], price: number | bigint) {
+    if (variations && variations.length > 0) {
+      return findPriceRange(variations);
+    }
+
+    return formatPrice(price);
+  }
 
   return (
     <ProductPriceStyles.Wrapper center={center}>
       {!sale_price ? (
         <ProductPriceStyles.Regular isOnSale={false} size={size}>
-          {variations && findPriceRange(variations)}
-          {!variations && formatPrice(regular_price)}
+          {renderPrice(variations, regular_price)}
         </ProductPriceStyles.Regular>
       ) : (
         <>
           <ProductPriceStyles.Regular isOnSale={true} size={size}>
-            {/* {variations && filteredVariantPrice(variations)} */}
-            {!variations && formatPrice(regular_price)}
+            {renderPrice(variations, regular_price)}
           </ProductPriceStyles.Regular>
           <ProductPriceStyles.Sale size={size}>
-            {/* {variations && filteredVariantPrice(variations)} */}
-            {!variations && formatPrice(sale_price)}
+            {renderPrice(variations, sale_price)}
           </ProductPriceStyles.Sale>
         </>
       )}

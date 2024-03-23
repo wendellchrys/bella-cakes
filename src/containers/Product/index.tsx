@@ -29,8 +29,6 @@ const ProductPageContainer: React.FC<ProductPageContentProps> = ({ product, vari
   // Estado para a variação selecionada
   const [selectedVariation, setSelectedVariation] = useState<Variations | undefined>(undefined)
 
-  console.log('variations:', variations[0])
-
   // Lidar com a mudança de seleção de variação
   const handleVariationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const variationId = parseInt(event.target.value, 10);
