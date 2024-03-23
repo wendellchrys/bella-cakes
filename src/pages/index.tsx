@@ -63,7 +63,7 @@ export async function getStaticProps() {
     return item.name !== 'Uncategorized'
   })
 
-  const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=4&status=publish`)
+  const productsRes = await fetcher(`/wp-json/wc/v3/products?per_page=12&status=publish`)
   const featured = await productsRes.json()
 
   return {
