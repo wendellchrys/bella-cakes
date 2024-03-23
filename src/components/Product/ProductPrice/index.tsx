@@ -20,8 +20,6 @@ const ProductPrice: FC<ProductPriceProps> = ({ product, variations, center, size
     return <Loader />
   }
 
-  console.log('variants', variations)
-
   const { sale_price, regular_price } = getSingleProduct(product.id, data)
 
   function renderPrice(variations: Variations[], price: number | bigint) {
