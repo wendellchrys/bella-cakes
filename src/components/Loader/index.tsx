@@ -1,6 +1,6 @@
 import React from 'react'
 import * as LoaderStyles from './styled'
-import { PacmanLoader } from 'react-spinners'
+import { PuffLoader } from 'react-spinners'
 
 const Loader = () => {
   return (
