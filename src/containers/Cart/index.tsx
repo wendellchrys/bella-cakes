@@ -1,10 +1,12 @@
-import { BasicContainer, Loader, SectionTitle } from '../../styles/utils'
+import { BasicContainer, SectionTitle } from '../../styles/utils'
 import * as CartPageStyles from './styled'
 import React, { useContext } from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { CartList } from '@/components/CartList'
+import Loader from '@/components/Loader'
+
 interface CartPageProps { }
 
 const CartPageContainer: NextPage<CartPageProps> = () => {
