@@ -5,7 +5,7 @@ import { PacmanLoader } from 'react-spinners'
 const Loader = () => {
   return (
     <LoaderStyles.Container>
-      <PacmanLoader color="#ffffff" />
+      <PuffLoader color="#ffffff" />
     </LoaderStyles.Container>
   )
 }
