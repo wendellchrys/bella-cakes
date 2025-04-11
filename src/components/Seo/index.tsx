@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import React from 'react'
 
-interface CustomHeadProps {}
+interface CustomHeadProps { }
 
 const baseInfo = {
-  author: 'Paju',
-  titlePrefix: 'Paju Studios',
-  name: 'pajustudios.eu',
-  url: 'https://wwww.pajustudios.eu',
-  description: 'Eu design studios',
-  keywords: `Design, Web Development`,
+  author: 'WC.DEV',
+  titlePrefix: 'WC.DEV',
+  name: 'bellacakes.com.br',
+  url: 'https://bellacakes.com.br',
+  description: 'Ovos de Páscoa em Goiânia',
+  keywords: `Ovos de pascoa, pascoa`,
 }
 
 const Seo: React.FC<CustomHeadProps> = () => {
