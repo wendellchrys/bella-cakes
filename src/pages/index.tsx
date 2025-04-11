@@ -31,7 +31,7 @@ const HomePage: NextPage<HomePageProps> = ({ categories, featured }) => {
             return <SingleCategory key={category.id} category={category} />
           })}
         </BasicGrid> */}
-        <SectionTitle>Ovos de Páscoa 2024</SectionTitle>
+        <SectionTitle>Ovos de Páscoa 2025</SectionTitle>
         <BasicGrid lg={4} md={3} sm={2} xs={1}>
           {featured?.map((product: Product) => {
             return (

@@ -8,17 +8,17 @@ const Hero: React.FC = () => {
 
   // Configuração padrão da imagem para dispositivos móveis
   let imageData = {
-    src: `${process.env.NEXT_PUBLIC_WP_API_URL!}/wp-content/uploads/2024/03/sistema-bella-cakes-banners-02.jpg`,
+    src: `${process.env.NEXT_PUBLIC_WP_API_URL!}/wp-content/uploads/2025/04/sistema-bella-cakes-banners-03.jpg`,
     width: 500,
     height: 700,
-    alt: 'Ovos de Páscoa 2024',
+    alt: 'Ovos de Páscoa 2025',
   };
 
   // Se não for um dispositivo móvel, atualiza a configuração da imagem para desktop
   if (!isMobile) {
     imageData = {
       ...imageData,
-      src: `${process.env.NEXT_PUBLIC_WP_API_URL!}/wp-content/uploads/2024/03/sistema-bella-cakes-banners-01.jpg`,
+      src: `${process.env.NEXT_PUBLIC_WP_API_URL!}/wp-content/uploads/2025/04/sistema-bella-cakes-banners-04.jpg`,
       width: 1920,
       height: 500,
     };
