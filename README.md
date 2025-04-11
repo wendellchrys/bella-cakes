@@ -1,4 +1,4 @@
-# Next.js WooCommerce
+#Bella Cakes | Next.js WooCommerce
 
 Using Next.js, TypeScript and styled-components.
 
